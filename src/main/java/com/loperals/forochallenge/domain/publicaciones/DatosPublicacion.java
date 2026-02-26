@@ -1,9 +1,11 @@
 package com.loperals.forochallenge.domain.publicaciones;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
 public record DatosPublicacion(
-        Long idUsuario,
-    String titulo,
-    String mensaje,
-        Curso curso
+        @NotNull Long idUsuario,
+        @NotNull String titulo,
+        @NotNull String mensaje,
+        @NotNull Curso curso
 ) {
 }
