@@ -38,4 +38,8 @@ public class Publicacion {
         this.mensaje=datos.mensaje();
         this.curso=datos.curso();
     }
+
+    public void eliminar() {
+        this.estado=false;
+    }
 }

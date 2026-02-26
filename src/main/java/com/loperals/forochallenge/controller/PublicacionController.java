@@ -56,4 +56,14 @@ public class PublicacionController {
         return ResponseEntity.ok(new DatosConsultaPublicacion(publicacion));
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity eliminar(@PathVariable Long id){
+        var publicacion= publicacionRepository.getReferenceById(id);
+        publicacion.eliminar();
+
+        publicacionRepository.save(publicacion);
+
+        return ResponseEntity.ok("Registro eliminado de manera exitosa");
+    }
+
 }
