@@ -30,5 +30,6 @@ public class Publicacion {
     @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;
 
+    @Enumerated(EnumType.STRING)
     private Curso curso;
 }
