@@ -21,6 +21,8 @@ public class Publicacion {
     private Long id;
     private String titulo;
     private String mensaje;
+
+    @Column(name="fechaCreacion")
     private LocalDateTime fechaCreacion;
     private Boolean estado;
 
