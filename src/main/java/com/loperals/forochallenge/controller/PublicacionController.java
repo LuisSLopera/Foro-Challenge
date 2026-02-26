@@ -1,6 +1,7 @@
 package com.loperals.forochallenge.controller;
 
 
+import com.loperals.forochallenge.domain.ValidacionException;
 import com.loperals.forochallenge.domain.publicaciones.DatosConsultaPublicacion;
 import com.loperals.forochallenge.domain.publicaciones.DatosPublicacion;
 import com.loperals.forochallenge.domain.publicaciones.PublicacionRepository;
@@ -58,12 +59,19 @@ public class PublicacionController {
 
     @DeleteMapping("{id}")
     public ResponseEntity eliminar(@PathVariable Long id){
-        var publicacion= publicacionRepository.getReferenceById(id);
-        publicacion.eliminar();
+        var prueba =publicacionRepository.existsById(id);
+        if (prueba){
+            var publicacion= publicacionRepository.getReferenceById(id);
+            publicacion.eliminar();
 
-        publicacionRepository.save(publicacion);
+            publicacionRepository.save(publicacion);
 
-        return ResponseEntity.ok("Registro eliminado de manera exitosa");
+            return ResponseEntity.ok("Registro eliminado de manera exitosa");
+        } else {
+            throw new  ValidacionException("No existe una publicacion con este id");
+        }
+
+
     }
 
 }
