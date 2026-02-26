@@ -32,4 +32,10 @@ public class Publicacion {
 
     @Enumerated(EnumType.STRING)
     private Curso curso;
+
+    public void modificar(DatosPublicacion datos) {
+        this.titulo=datos.titulo();
+        this.mensaje=datos.mensaje();
+        this.curso=datos.curso();
+    }
 }

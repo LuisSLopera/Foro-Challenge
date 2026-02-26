@@ -32,4 +32,15 @@ public class RegistrarPublicacion {
         return new DatosConsultaPublicacion(registro);
 
     }
+
+    public void modificar(DatosPublicacion datos, Long id) {
+        var usuario = usuariorepository.findById(datos.idUsuario()).get();
+        var fecha = LocalDateTime.now();
+        var publicacion = publicacionRepository.getReferenceById(id);
+
+        validadores.forEach(v -> v.validar(datos));
+
+        publicacion.modificar(datos);
+        publicacionRepository.save(publicacion);
+    }
 }
